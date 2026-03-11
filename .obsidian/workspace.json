@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "914a729c05fe93e7",
+        "id": "0080dfa2bb4048ca",
         "type": "tabs",
         "children": [
           {
-            "id": "8c4301023716cac2",
+            "id": "8055dff787122163",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -176,10 +176,19 @@
       "bases:Yeni taban oluştur": false
     }
   },
-  "active": "8c4301023716cac2",
+  "active": "8055dff787122163",
   "lastOpenFiles": [
-    "terms/Feature Flag.md",
     "terms/Pitfall.md",
+    "notes/iOS Legacy Storage UserDefaults ve Keychain Geçiş Stratejileri.md",
+    "iOS Legacy Storage.md",
+    "visuals/ios_legacy_store.png",
+    "notes/ios-legacy-storage-userdefaults-ve-keychain-gecis-stratejileri.md",
+    "notes",
+    "visuals/ios_legacy_store-3.png",
+    "visuals/ios-legacy-storage.md",
+    "visuals/ios_legacy_store-2.png",
+    "terms/Feature Flag.md",
+    "terms/CAP Teoremi.md",
     "terms/feature-flag.md",
     "Feature Flag.md"
   ]
