@@ -9,17 +9,18 @@ tags:
   - network
   - hilt
   - gradle
+  - interceptor
 summary: >-
-  Android projede Retrofit + OkHttp + Gson ile network altyapısı kurulumu ve
-  Hilt ile DI entegrasyonu
+  Android projede Retrofit + OkHttp + Gson ile network altyapısı kurulumu,
+  custom interceptor yapısı ve Hilt ile DI entegrasyonu
 relatedTerms:
   - Hilt Dependency Injection Entegrasyonu
-created: '2026-03-17T22:16:04.912Z'
-updated: '2026-03-17T22:16:04.912Z'
+created: '2026-03-17T22:33:50.785Z'
+updated: '2026-03-17T22:33:50.785Z'
 ---
 # Retrofit Network Katmanı Entegrasyonu
 
-> Android projede Retrofit + OkHttp + Gson ile network altyapısı kurulumu ve Hilt ile DI entegrasyonu
+> Android projede Retrofit + OkHttp + Gson ile network altyapısı kurulumu, custom interceptor yapısı ve Hilt ile DI entegrasyonu
 
 ## İçerik
 
@@ -52,7 +53,75 @@ implementation(libs.okhttp.logging.interceptor)
 implementation(libs.gson)
 ```
 
-## Hilt ile NetworkModule
+## Custom Interceptor Yapısı
+
+### Interceptor Nedir?
+Her HTTP isteği bir interceptor zincirinden geçer. Interceptor, istek sunucuya gitmeden araya girip isteği değiştirebilen veya cevabı kontrol edebilen bir katman.
+
+```
+Uygulama → [Interceptor 1] → [Interceptor 2] → [Interceptor N] → Sunucu
+Sunucu  → [Interceptor N] → [Interceptor 2] → [Interceptor 1] → Uygulama
+```
+
+### Custom Interceptor Oluşturma
+`Interceptor` interface'ini implement et, `intercept()` metodunu override et:
+
+```kotlin
+@Singleton
+class AuthInterceptor @Inject constructor() : Interceptor {
+
+    private var token: String? = null
+
+    fun setToken(newToken: String?) {
+        token = newToken
+    }
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val originalRequest = chain.request()
+
+        // Token yoksa isteği olduğu gibi gönder
+        if (token.isNullOrEmpty()) {
+            return chain.proceed(originalRequest)
+        }
+
+        // Token varsa header ekle
+        val authenticatedRequest = originalRequest.newBuilder()
+            .header("Authorization", "Bearer $token")
+            .build()
+
+        return chain.proceed(authenticatedRequest)
+    }
+}
+```
+
+### Temel Kavramlar
+- `chain.request()` → Orijinal isteği al
+- `chain.proceed(request)` → İsteği bir sonraki halkaya veya sunucuya gönder
+- `originalRequest.newBuilder()` → Request immutable, yeni kopya oluşturup değiştirirsin
+- `@Inject constructor()` → Hilt otomatik oluşturur, @Module'e gerek yok
+
+### OkHttpClient'a Bağlama
+```kotlin
+@Provides
+@Singleton
+fun provideOkHttpClient(
+    loggingInterceptor: HttpLoggingInterceptor,
+    authInterceptor: AuthInterceptor
+): OkHttpClient {
+    return OkHttpClient.Builder()
+        .addInterceptor(authInterceptor)
+        .addInterceptor(loggingInterceptor)
+        .build()
+}
+```
+
+### Interceptor Sırası Önemli!
+1. Önce `authInterceptor` → token'ı ekler
+2. Sonra `loggingInterceptor` → isteğin son halini (token dahil) loglar
+
+Sıra ters olursa log'da token header'ı görünmez.
+
+## Hilt ile NetworkModule (Güncel)
 
 ```kotlin
 @Module
@@ -71,8 +140,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        authInterceptor: AuthInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
             .addInterceptor(loggingInterceptor)
             .build()
     }
@@ -104,11 +177,12 @@ object NetworkModule {
 
 ## Önemli Noktalar
 
+- Interceptor Interceptor interface'ini implement ederek oluşturulur
+- chain.request() ile orijinal istek alınır, chain.proceed() ile gönderilir
+- Request immutable - newBuilder() ile kopya oluşturup değiştirilir
+- Interceptor sırası önemli: auth önce, logging sonra
+- @Inject constructor ile Hilt otomatik oluşturur, @Module gerekmez
 - Retrofit interface tabanlı çalışır - interface yaz, implementasyonu Retrofit üretir
-- converter-gson ile JSON otomatik parse edilir
-- LoggingInterceptor debug için çok değerli, production'da kapatılmalı
-- Hilt @Module ile Retrofit singleton olarak sağlanır
-- OkHttpClient'a auth interceptor gibi ek katmanlar eklenebilir
 
 ## İlişkili Terimler
 
