@@ -11,10 +11,14 @@
             "id": "67c49814f5d88ea4",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "terms/Race Condition.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Yeni sekme"
+              "title": "Race Condition"
             }
           }
         ]
@@ -178,6 +182,7 @@
   },
   "active": "67c49814f5d88ea4",
   "lastOpenFiles": [
+    "terms/Race Condition.md",
     "notes/Flutter Quick Actions (App Shortcuts) Entegrasyonu.md",
     "notes/biz1iz_flutter — Flavor Integration.md",
     "terms/Pitfall.md",
