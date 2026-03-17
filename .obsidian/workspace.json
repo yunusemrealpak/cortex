@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0080dfa2bb4048ca",
+        "id": "726b9affac85bf24",
         "type": "tabs",
         "children": [
           {
-            "id": "8055dff787122163",
+            "id": "67c49814f5d88ea4",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -176,9 +176,13 @@
       "bases:Yeni taban oluştur": false
     }
   },
-  "active": "8055dff787122163",
+  "active": "67c49814f5d88ea4",
   "lastOpenFiles": [
+    "notes/Flutter Quick Actions (App Shortcuts) Entegrasyonu.md",
+    "notes/biz1iz_flutter — Flavor Integration.md",
     "terms/Pitfall.md",
+    "terms/Feature Flag.md",
+    "terms/CAP Teoremi.md",
     "notes/iOS Legacy Storage UserDefaults ve Keychain Geçiş Stratejileri.md",
     "iOS Legacy Storage.md",
     "visuals/ios_legacy_store.png",
@@ -187,8 +191,6 @@
     "visuals/ios_legacy_store-3.png",
     "visuals/ios-legacy-storage.md",
     "visuals/ios_legacy_store-2.png",
-    "terms/Feature Flag.md",
-    "terms/CAP Teoremi.md",
     "terms/feature-flag.md",
     "Feature Flag.md"
   ]

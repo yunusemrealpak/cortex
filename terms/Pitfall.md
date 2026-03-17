@@ -11,9 +11,10 @@ summary: >-
   hata veya sorun kaynağı.
 relatedTerms:
   - Feature Flag
-  - iOS Legacy Storage
-created: '2026-03-10T18:34:22.333Z'
-updated: '2026-03-11T09:47:19.363Z'
+  - iOS Legacy Storage UserDefaults ve Keychain Geçiş Stratejileri
+  - Race Condition
+created: 2026-03-10T18:34:22.333Z
+updated: '2026-03-17T11:33:32.844Z'
 confidence: learning
 source: claude-cli
 ---
@@ -76,3 +77,4 @@ Performans sorunu yaşanmadan önce kod optimizasyonu yapmak, gereksiz karmaşı
 
 ## İlişkili Terimler
 - [[iOS Legacy Storage UserDefaults ve Keychain Geçiş Stratejileri]]
+- [[Race Condition]]

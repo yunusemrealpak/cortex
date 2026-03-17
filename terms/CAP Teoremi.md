@@ -12,9 +12,10 @@ summary: >-
   Dağıtık bir sistemin Tutarlılık (Consistency), Erişilebilirlik (Availability)
   ve Bölünme Toleransı (Partition Tolerance) özelliklerinden aynı anda yalnızca
   ikisini garanti edebileceğini öne süren teorem.
-relatedTerms: []
+relatedTerms:
+  - Race Condition
 created: '2026-03-10T22:35:14.005Z'
-updated: '2026-03-10T22:35:14.005Z'
+updated: '2026-03-17T11:33:32.842Z'
 confidence: learning
 source: claude-cli
 ---
@@ -60,3 +61,8 @@ PostgreSQL gibi tekil bir veritabanı sunucusu hem tutarlı hem de erişilebilir
 - Brewer, E. (2000). Towards Robust Distributed Systems. PODC Keynote.
 - Gilbert, S. & Lynch, N. (2002). Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services. ACM SIGACT News.
 - Martin Kleppmann — Designing Data-Intensive Applications (O'Reilly, 2017), Chapter 9
+
+
+## İlişkili Terimler
+
+- [[Race Condition]]
