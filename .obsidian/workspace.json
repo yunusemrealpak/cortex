@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9b53421196ed8396",
+        "id": "b0cdb6b69068b5e2",
         "type": "tabs",
         "children": [
           {
-            "id": "44a943fccdedc1a8",
+            "id": "6506373d1da267f8",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -176,8 +176,9 @@
       "bases:Yeni taban oluştur": false
     }
   },
-  "active": "44a943fccdedc1a8",
+  "active": "6506373d1da267f8",
   "lastOpenFiles": [
+    "notes/Retrofit Network Katmanı Entegrasyonu.md",
     "notes/Hilt Dependency Injection Entegrasyonu.md",
     "terms/Race Condition.md",
     "terms/Memory-Mapped Files.md",
