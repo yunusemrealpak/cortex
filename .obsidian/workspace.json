@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b0cdb6b69068b5e2",
+        "id": "160f1d3315e45dce",
         "type": "tabs",
         "children": [
           {
-            "id": "6506373d1da267f8",
+            "id": "5f898fbf3a0186ed",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -176,8 +176,9 @@
       "bases:Yeni taban oluştur": false
     }
   },
-  "active": "6506373d1da267f8",
+  "active": "5f898fbf3a0186ed",
   "lastOpenFiles": [
+    "notes/Flutter DevTools Memory Grafiği Okuması.md",
     "notes/Retrofit Network Katmanı Entegrasyonu.md",
     "notes/Hilt Dependency Injection Entegrasyonu.md",
     "terms/Race Condition.md",
